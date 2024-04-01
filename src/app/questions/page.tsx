@@ -1,20 +1,25 @@
-"use client";
+"use client";// Define types for programmingQuestions array items
+type ProgrammingQuestion = {
+  question: string;
+  ans: string;
+};
+
 // Page.js
 import React, { useState, useEffect } from "react";
 import programmingQuestions from "@/questionAns";
 import axios from "axios";
 
 function Page() {
-  const [likes, setLikes] = useState(
+  const [likes, setLikes] = useState<boolean[]>(
     new Array(programmingQuestions.length).fill(false)
   );
-  const [data, setData] = useState([]);
-  const [likedQuestions, setLikedQuestions] = useState([]);
+  const [data, setData] = useState<ProgrammingQuestion[]>([]);
+  const [likedQuestions, setLikedQuestions] = useState<ProgrammingQuestion[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
+        const response = await axios.get<ProgrammingQuestion[]>(
           "http://localhost:3000/api/test/result"
         );
         console.log(response.data);
@@ -28,7 +33,7 @@ function Page() {
   }, []); // empty dependency array to run only once
 
   useEffect(() => {
-    const filteredQuestions = data.filter((item, index : number) => likes[index]);
+    const filteredQuestions = data.filter((item, index) => likes[index]);
     setLikedQuestions(filteredQuestions);
   }, [likes, data]);
 
@@ -37,9 +42,6 @@ function Page() {
     newLikes[index] = !newLikes[index];
     setLikes(newLikes);
   };
-
-
-  // to download filtered questions
 
   const downloadFilteredQuestions = () => {
     const json = JSON.stringify(likedQuestions);
@@ -67,7 +69,7 @@ function Page() {
 
       <br />
       <ul>
-        {data.map((item: number, index: number) => (
+        {data.map((item, index) => (
           <div key={index} className="bg-gray-100 p-4 my-4 rounded-md">
             <li className="text-lg font-semibold text-black">
               {item.question}
