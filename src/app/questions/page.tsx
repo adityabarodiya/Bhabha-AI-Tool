@@ -28,11 +28,11 @@ function Page() {
   }, []); // empty dependency array to run only once
 
   useEffect(() => {
-    const filteredQuestions = data.filter((item, index) => likes[index]);
+    const filteredQuestions = data.filter((item, index : number) => likes[index]);
     setLikedQuestions(filteredQuestions);
   }, [likes, data]);
 
-  const handleLike = (index) => {
+  const handleLike = (index: number) => {
     const newLikes = [...likes];
     newLikes[index] = !newLikes[index];
     setLikes(newLikes);
@@ -67,7 +67,7 @@ function Page() {
 
       <br />
       <ul>
-        {data.map((item, index) => (
+        {data.map((item: number, index: number) => (
           <div key={index} className="bg-gray-100 p-4 my-4 rounded-md">
             <li className="text-lg font-semibold text-black">
               {item.question}
