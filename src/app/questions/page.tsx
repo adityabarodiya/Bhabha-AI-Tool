@@ -20,7 +20,7 @@ function Page() {
     const fetchData = async () => {
       try {
         const response = await axios.get<ProgrammingQuestion[]>(
-          "http://localhost:3000/api/test/result"
+          "https://bhabha-ai-tool.vercel.app/api/test/result"
         );
         console.log(response.data);
         setData(response.data);
@@ -63,7 +63,7 @@ function Page() {
       <div className="flex items-center">
         <h2 className="text-xl font-bold">Programming Questions</h2>
         <button className="ml-4 px-4 py-2 bg-green-500 hover:bg-green-700 text-white font-bold rounded" onClick={downloadFilteredQuestions}>
-          Download Liked Questions
+          Download Filtered Questions
         </button>
       </div>
 
