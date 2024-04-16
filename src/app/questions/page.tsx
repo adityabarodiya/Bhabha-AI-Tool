@@ -4,7 +4,7 @@ type ProgrammingQuestion = {
   ans: string;
 };
 
-// Page.js
+
 import React, { useState, useEffect } from "react";
 import programmingQuestions from "@/questionAns";
 import axios from "axios";
