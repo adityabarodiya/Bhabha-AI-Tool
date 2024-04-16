@@ -9,7 +9,7 @@ const handleSubmit = async () => {
 
   try {
     const response = await axios.get("https://bhabha-ai-tool.vercel.app/api/test/result");
-    console.log(response.data);
+    
 
     data = response.data
 
